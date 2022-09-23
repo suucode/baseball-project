@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.metacoding.bb.domain.reasons.ReasonsDao">
+
+	<insert id="insert">
+		INSERT INTO reasons(reasons)
+		VALUES(#{reasons})
+	</insert>
+
+	<select id="findAll" resultType="site.metacoding.bb.domain.reasons.Reasons">
+		SELECT reasons FROM reasons
+	</select>
+
+	<update id="update">
+		
+	</update>
+
+	<delete id="deleteById">
+		DELETE FROM reasons WHERE id = #{id}
+	</delete>
+
+</mapper>

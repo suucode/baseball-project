@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.metacoding.bb.domain.outers.OutersDao">
+
+	<insert id="insert">
+		INSERT INTO outers(playersId, teamsId, reasonsId, createdAt)
+		VALUES(#{playersId}, #{teamsId}, #{reasonsId}, now())
+	</insert>
+
+	<select id="findAll" resultType="site.metacoding.bb.domain.outers.Outers">
+		SELECT p.playerName, t.teamName, r.reason, o.createdAt
+		FROM outers o
+		LEFT OUTER JOIN players p ON p.id = o.playersId
+		LEFT OUTER JOIN teams t ON p.teamsId = t.id
+		LEFT OUTER JOIN reasons r ON r.id = o.reasonsId
+	</select>
+
+	<update id="update">
+		
+	</update>
+
+	<delete id="deleteById">
+		DELETE FROM outers WHERE id = #{id}
+	</delete>
+
+</mapper>

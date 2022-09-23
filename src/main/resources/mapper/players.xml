@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.metacoding.bb.domain.players.PlayersDao">
+
+	<insert id="insert">
+		INSERT INTO players(playerName, teamsId, positionsId, createdAt)
+		VALUES(#{stadiumName}, #{teamsId}, #{positionsId}, now())
+	</insert>
+
+	<select id="findAll" resultType="site.metacoding.bb.domain.players.Players">
+		SELECT p.playerName, t.teamName, po.positions, p.createdAt
+		FROM players p
+		LEFT OUTER JOIN teams t ON p.teamsId = t.id
+		LEFT OUTER JOIN positions po ON p.positionsId = po.id
+	</select>
+
+	<update id="update">
+		
+	</update>
+
+	<delete id="deleteById">
+		DELETE FROM players WHERE id = #{id}
+	</delete>
+
+</mapper>
