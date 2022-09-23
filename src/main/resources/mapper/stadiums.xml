@@ -9,10 +9,17 @@
 		VALUES(#{stadiumName}, #{teamsId}, now())
 	</insert>
 
-	<select id="findAll" resultType="site.metacoding.bb.domain.stadiums.Stadiums">
-		SELECT s.stadiumName, t.teamName, s.createdAt
+	<select id="findAll" resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
+		SELECT s.id, s.stadiumName, t.teamName, s.createdAt
 		FROM stadiums s LEFT OUTER JOIN teams t
 		ON s.teamsId = t.id
+	</select>
+	
+	<select id="findById" resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
+		SELECT s.id, s.stadiumName, t.teamName, s.createdAt
+		FROM stadiums s LEFT OUTER JOIN teams t
+		ON s.teamsId = t.id
+		WHERE s.id = #{id}
 	</select>
 
 	<update id="update">

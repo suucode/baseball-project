@@ -1,4 +1,4 @@
-package site.metacoding.bb.domain.stadiums;
+package site.metacoding.bb.web.dto.response.stadiums;
 
 import java.sql.Timestamp;
 
@@ -9,14 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class Stadiums {
+public class ListDto {
 	private Integer id;
 	private String stadiumName;
-	private Integer teamsId;
+	private String teamname;
 	private Timestamp createdAt;
-	
-	public Stadiums(String stadiumName) {
-		this.stadiumName = stadiumName;
-	}
-			
 }
