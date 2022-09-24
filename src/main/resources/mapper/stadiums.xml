@@ -2,28 +2,29 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="site.metacoding.bb.domain.stadiums.StadiumsDao">
+<mapper
+	namespace="site.metacoding.bb.domain.stadiums.StadiumsDao">
 
-	<insert id="insert">
-		INSERT INTO stadiums(stadiumName, teamsId, createdAt)
-		VALUES(#{stadiumName}, #{teamsId}, now())
+	<insert id="save">
+		INSERT INTO stadiums(stadiumName, createdAt)
+		VALUES(#{stadiumName}, now())
 	</insert>
 
-	<select id="findAll" resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
-		SELECT s.id, s.stadiumName, t.teamName, s.createdAt
-		FROM stadiums s LEFT OUTER JOIN teams t
-		ON s.teamsId = t.id
+	<select id="findAll"
+		resultType="site.metacoding.bb.domain.stadiums.Stadiums">
+		SELECT id, stadiumName, createdAt
+		FROM stadiums
 	</select>
-	
-	<select id="findById" resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
-		SELECT s.id, s.stadiumName, t.teamName, s.createdAt
-		FROM stadiums s LEFT OUTER JOIN teams t
-		ON s.teamsId = t.id
-		WHERE s.id = #{id}
+
+	<select id="findById"
+		resultType="site.metacoding.bb.domain.stadiums.Stadiums">
+	SELECT id, stadiumName, createdAt
+	FROM stadiums
+	WHERE id =	#{id}
 	</select>
 
 	<update id="update">
-		
+
 	</update>
 
 	<delete id="deleteById">

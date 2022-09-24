@@ -9,7 +9,6 @@ import site.metacoding.bb.domain.stadiums.Stadiums;
 import site.metacoding.bb.domain.stadiums.StadiumsDao;
 import site.metacoding.bb.domain.teams.TeamsDao;
 import site.metacoding.bb.web.dto.request.stadiums.SaveDto;
-import site.metacoding.bb.web.dto.response.stadiums.ListDto;
 
 @RequiredArgsConstructor
 @Service
@@ -21,8 +20,8 @@ public class StadiumsService {
 		stadiumsDao.save(stadiums);
 	}
 	
-	public List<ListDto> 경기장목록보기(String teamname) {
-		return stadiumsDao.findAll(teamname);
+	public List<Stadiums> 경기장목록보기() {
+		return stadiumsDao.findAll();
 	}
 	
 	public void 경기장삭제(Integer id) {

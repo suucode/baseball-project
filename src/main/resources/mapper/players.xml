@@ -5,19 +5,22 @@
 <mapper namespace="site.metacoding.bb.domain.players.PlayersDao">
 
 	<insert id="insert">
-		INSERT INTO players(playerName, teamsId, positionsId, createdAt)
+		INSERT INTO players(playerName, teamsId, positionsId,
+		createdAt)
 		VALUES(#{stadiumName}, #{teamsId}, #{positionsId}, now())
 	</insert>
 
-	<select id="findAll" resultType="site.metacoding.bb.domain.players.Players">
-		SELECT p.playerName, t.teamName, po.positions, p.createdAt
+	<select id="findAll"
+		resultType="site.metacoding.bb.domain.players.Players">
+		SELECT t.teamName, po.positions, p.playerName, p.createdAt
 		FROM players p
 		LEFT OUTER JOIN teams t ON p.teamsId = t.id
-		LEFT OUTER JOIN positions po ON p.positionsId = po.id
+		LEFT OUTER
+		JOIN positions po ON p.positionsId = po.id
 	</select>
 
 	<update id="update">
-		
+
 	</update>
 
 	<delete id="deleteById">

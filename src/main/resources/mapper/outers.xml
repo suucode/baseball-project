@@ -5,20 +5,24 @@
 <mapper namespace="site.metacoding.bb.domain.outers.OutersDao">
 
 	<insert id="insert">
-		INSERT INTO outers(playersId, teamsId, reasonsId, createdAt)
+		INSERT INTO outers(playersId, teamsId, reasonsId,
+		createdAt)
 		VALUES(#{playersId}, #{teamsId}, #{reasonsId}, now())
 	</insert>
 
-	<select id="findAll" resultType="site.metacoding.bb.domain.outers.Outers">
-		SELECT p.playerName, t.teamName, r.reason, o.createdAt
+	<select id="findAll"
+		resultType="site.metacoding.bb.domain.outers.Outers">
+		SELECT t.teamName, po.positions, p.playerName, r.reason,
+		o.createdAt
 		FROM outers o
 		LEFT OUTER JOIN players p ON p.id = o.playersId
 		LEFT OUTER JOIN teams t ON p.teamsId = t.id
 		LEFT OUTER JOIN reasons r ON r.id = o.reasonsId
+		LEFT OUTER JOIN positions po ON po.id = o.positionsId
 	</select>
 
 	<update id="update">
-		
+
 	</update>
 
 	<delete id="deleteById">

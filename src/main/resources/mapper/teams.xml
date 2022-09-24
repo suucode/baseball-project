@@ -5,16 +5,20 @@
 <mapper namespace="site.metacoding.bb.domain.teams.TeamsDao">
 
 	<insert id="insert">
-		INSERT INTO teams(teamName,	createdAt)
+		INSERT INTO teams(teamName, createdAt)
 		VALUES(#{teamName},now())
 	</insert>
 
-	<select id="findAll" resultType="site.metacoding.bb.domain.teams.Teams">
-		SELECT teamName, createdAt FROM teams
+	<select id="findAll"
+		resultType="site.metacoding.bb.domain.teams.Teams">
+		SELECT s.stadiumName, t.teamName, t.createdAt
+		FROM teams t LEFT OUTER JOIN stadiums s
+		ON t.stadiumsId = s.id
+
 	</select>
 
 	<update id="update">
-		
+
 	</update>
 
 	<delete id="deleteById">
